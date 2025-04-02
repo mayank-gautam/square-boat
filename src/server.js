@@ -11,15 +11,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error("Database connection failed:", err);
-    process.exit(1);
-  }
-  console.log("Connected to MySQL database!");
-  connection.release();
-});
-
 app.use("/api/auth", authRoutes);
 app.use("/api/candidates", candidateRoutes);
 app.use("/api/recruiters", recruiterRoutes);
